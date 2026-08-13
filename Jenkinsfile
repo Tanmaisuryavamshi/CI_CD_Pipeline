@@ -10,9 +10,9 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
+                bat '''
+                    python -m venv venv
+                    call venv\\Scripts\\activate.bat
                     pip install --no-cache-dir -r requirements.txt
                 '''
             }
@@ -20,9 +20,9 @@ pipeline {
 
         stage('Run tests') {
             steps {
-                sh '''
-                    . venv/bin/activate
-                    pytest tests/ --junitxml=report.xml --alluredir=allure-results
+                bat '''
+                    call venv\\Scripts\\activate.bat
+                    pytest --junitxml=report.xml --alluredir=allure-results
                 '''
             }
         }
