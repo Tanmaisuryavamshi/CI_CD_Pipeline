@@ -22,7 +22,7 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate.bat
-                    pytest --junitxml=report.xml --alluredir=allure-results
+                    pytest -v --junitxml=report.xml --alluredir=allure-results
                 '''
             }
         }
